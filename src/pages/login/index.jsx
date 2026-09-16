@@ -6,6 +6,7 @@ import { MdEmail, MdLock } from 'react-icons/md';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import {Input} from '../../components/Input';
+import {api} from '../../services/api';
 import { Column, Container, CriarText, EsqueciText, Row, SubTitleLogin, Title, TitleLogin, Wrapper } from './styles';
 
 const schema = yup.object({
@@ -15,14 +16,23 @@ const schema = yup.object({
 
 const Login = () => {
     const navigate = useNavigate();
-    const { control, handleSubmit, formState: {errors, isValid}} = useForm({
+    const { control, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(schema),
         mode: 'onSubmit',
     });
-    const handleClickSignIn = () => {
-        navigate('/feed')
-        
-    }
+
+    const onSubmit = async formData =>{
+        try {
+            const {data} = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
+            if (data.length === 1){
+                navigate('/feed') 
+            }else{
+                alert('Email ou senha inválido')
+            }
+        }catch{
+            alert('Houve um erro, tente novamente.')
+        }
+    };
     return (
         <>
         <Header />
@@ -37,7 +47,7 @@ const Login = () => {
                 <Wrapper>
                     <TitleLogin>Faça seu cadastro</TitleLogin>
                     <SubTitleLogin>Faça seu login</SubTitleLogin>
-                    <form onSubmit={handleSubmit(handleClickSignIn)}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <Input name="email" errorMessage={errors.email?.message} control={control} placeholder="email" leftIcon={<MdEmail />}/>
                         <Input name="password" errorMessage={errors.password?.message} control={control} placeholder="senha" type="password" leftIcon={<MdLock />} />
                         <br />

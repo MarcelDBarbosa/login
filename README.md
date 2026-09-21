@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Styled Components](https://img.shields.io/badge/styled--components-db7093.svg?style=for-the-badge&logo=styled-components&logoColor=white) ![Axios](https://img.shields.io/badge/axios-671ddf.svg?style=for-the-badge&logo=axios&logoColor=white) ![JSON Server](https://img.shields.io/badge/json--server-000000.svg?style=for-the-badge&logo=json&logoColor=white)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TitunTech Login
 
-## Available Scripts
+Aplicação web desenvolvida com React para simular o acesso a uma plataforma da TitunTech. O projeto possui páginas de início, login, cadastro de usuários e feed, com navegação entre rotas usando React Router. Este projeto é a solução do desafio de projeto 3 da Formação React Developer da DIO.
 
-In the project directory, you can run:
+O login consulta os usuários armazenados em um backend simulado com `json-server`. A página de cadastro valida os dados, verifica se o email já está registrado e cria novos usuários no arquivo `db.json`, atribuindo um ID inteiro sequencial.
 
-### `npm start`
+## Tecnologias
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React
+- JavaScript
+- Styled Components
+- React Router DOM
+- React Hook Form
+- Yup
+- Axios
+- JSON Server `0.17.4`
+- Create React App
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Estrutura do projeto
 
-### `npm test`
+```text
+.
+├── db.json
+├── public/
+├── src/
+│   ├── App.js
+│   ├── index.js
+│   ├── assets/
+│   ├── components/
+│   │   ├── Button/
+│   │   ├── Card/
+│   │   ├── Header/
+│   │   ├── Input/
+│   │   └── UserInfo/
+│   ├── pages/
+│   │   ├── cadastro/
+│   │   ├── feed/
+│   │   ├── home/
+│   │   └── login/
+│   ├── services/
+│   │   └── api.js
+│   └── styles/
+│       └── global.js
+├── package.json
+└── README.md
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Responsabilidades principais
 
-### `npm run build`
+- `src/App.js`: configura as rotas `/`, `/login`, `/cadastro` e `/feed`.
+- `src/pages/home`: apresenta a página inicial e direciona o usuário para o login.
+- `src/pages/login`: valida email e senha e consulta o endpoint `GET /users` usando Axios.
+- `src/pages/cadastro`: valida nome, email e senha; impede emails duplicados; calcula o próximo ID e cria usuários com `POST /users`.
+- `src/pages/feed`: exibe o feed apresentado após o login.
+- `src/components`: reúne os componentes reutilizáveis de botão, cabeçalho, campos de entrada, cards e informações de usuários.
+- `src/services/api.js`: configura a instância Axios com a URL base `http://localhost:8001`.
+- `db.json`: funciona como banco de dados local dos usuários.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Como executar
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Instale as dependências do projeto:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+Em um terminal, inicie o backend simulado:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm run api
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+O `json-server` ficará disponível em [http://localhost:8001](http://localhost:8001), com os usuários em [http://localhost:8001/users](http://localhost:8001/users).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Em outro terminal, inicie a aplicação React:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+Depois, acesse [http://localhost:3000](http://localhost:3000) no navegador.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Fluxos disponíveis
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Login:** exige email e senha válidos cadastrados em `db.json`. Após a autenticação, direciona para `/feed`.
+- **Cadastro:** exige nome, email válido e senha com pelo menos seis caracteres. Emails já existentes não são cadastrados.
+- **Novo usuário:** o cadastro grava os campos `id`, `name`, `email` e `senha`. O `id` é calculado como o maior ID atual mais 1.
+- **Navegação:** a página inicial, o cabeçalho e os links de login/cadastro permitem navegar entre as páginas da aplicação.
 
-### Code Splitting
+## Outros comandos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Gerar uma versão otimizada para produção:
 
-### Analyzing the Bundle Size
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Executar os testes configurados pelo Create React App:
 
-### Making a Progressive Web App
+```bash
+npm test
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Observações
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- O backend é apenas uma simulação local baseada no arquivo `db.json`; não há autenticação de produção ou banco de dados real.
+- As senhas são armazenadas em texto simples para fins didáticos. Em uma aplicação real, elas devem ser protegidas no backend com hash e mecanismos de autenticação adequados.
+- O `json-server` está fixado na versão `0.17.4` para preservar os IDs dos usuários como números inteiros.
+- É necessário manter o backend em execução na porta 8001 enquanto a aplicação React estiver sendo utilizada.

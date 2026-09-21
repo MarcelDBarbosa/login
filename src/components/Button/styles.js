@@ -11,7 +11,7 @@ width: 100%;
 ${({variant}) => variant !== "primary" && css`
     min-width: 167px;
     height: 33px;
-    background: #6810e4;
+    background: #0c60b4;
     &:hover {
         opacity: 0.6;
         cursor: pointer;

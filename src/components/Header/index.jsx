@@ -1,7 +1,7 @@
-import {BuscarInputContainer, Column, Container, Input, LogoImage,
+import {BuscarInputContainer, Container, Input, LogoImage,
     Menu, MenuRight, Row, UserPicture, Wrapper} from './styles';
 import {Button} from '../Button';
-import logo from '../../assets/favicon.ico'
+import logo from '../../assets/logo_tituntech.png'
 
 const Header = ({autenticado}) => {
   return (

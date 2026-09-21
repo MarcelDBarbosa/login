@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
-import { Container, TextContent, Title, TitleHighlight } from './styles';
-import figura from '../../assets/favicon.ico';
+import { Container, TextContent, Title, TitleHighlight, Figura } from './styles';
+import figura from '../../assets/titun-tech-hero-b.png';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -27,7 +27,8 @@ const Home = () => {
                 <Button title="Começar agora" variant='secondary' onClick={handleClickSignIn} />
             </div>
             <div>
-                <img src={figura} alt="Imagem principal" />
+                <Figura src={figura} alt="Imagem principal" />
+                {/* No CSS <img src={figura} alt="Imagem principal" />  */}
             </div>
         </Container>
         </>

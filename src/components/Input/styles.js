@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const InputContainer = styled.div`
     width: 100%;
-    max-width: 275px;
+    max-width: 350px;
     height: 30px;
-    border-bottom: 1px solid #e9e5e5;
+    border-bottom: 1px solid #a544e5;
     display: flex;
     align-items: center;
     margin-top: 20px;
@@ -12,6 +12,7 @@ export const InputContainer = styled.div`
 
 export const IconContainer = styled.div`
     margin-right: 10px;
+    color: #a544e5;
 `
 
 export const InputText = styled.input`

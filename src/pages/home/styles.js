@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.main`
     width: 100%;
-    max-width: 80%;
+    max-width: 90%;
     margin: 0 auto;
-    margin-top: 120px;
+    margin-top: 30px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -28,8 +28,13 @@ export const TextContent = styled.p`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    width: 420px;
+    width: 300px;
     margin-bottom: 20px;
     line-height: 22px;
     color: #FFFFFF;
+`
+
+export const Figura = styled.img`
+    width: 100%;
+    max-width: 800px;
 `

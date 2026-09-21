@@ -25,7 +25,7 @@ export const Column = styled.div`
 export const Wrapper = styled.div`
     width: 100%;
     height: 47px;
-    background-color: #151515;
+    background-color: #0c60b4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,8 +67,7 @@ export const UserPicture = styled.img`
     border: 2px solid #FFFFFF;
 `
 export const LogoImage = styled.img`
-    width: 32px;
-    height: 32px; 
+    height: 100%; 
 `
 
 export const Input = styled.input`

@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.main`
     width: 100%;
-    max-width: 80%;
+    max-width: 90%;
     margin: 0 auto;
-    margin-top: 120px;
+    margin-top: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -53,7 +53,7 @@ export const CriarText = styled.p`
 `
 
 export const Wrapper = styled.div`
-    max-width: 300px;
+    max-width: 350px;
 `
 
 export const Column = styled.div`
@@ -66,8 +66,4 @@ export const Row = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-
-    a {
-        text-decoration: none;
-    }
 `

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import { MdEmail, MdLock } from 'react-icons/md';
+import { MdEmail, MdLock, MdPeople, MdPerson } from 'react-icons/md';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import {Input} from '../../components/Input';
@@ -10,11 +10,12 @@ import {api} from '../../services/api';
 import { Column, Container, CriarText, EsqueciText, Row, SubTitleLogin, Title, TitleLogin, Wrapper } from './styles';
 
 const schema = yup.object({
+    nome: yup.string().required('Campo obrigatório'),
     email: yup.string().email('Este endereço não é válido.').required('Campo obrigatório'),
     password: yup.string().min(6, 'No mínimo 6 caracteres.').required('Campo obrigatório'),
 }).required();
 
-const Login = () => {
+const Cadastro = () => {
     const navigate = useNavigate();
     const { control, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(schema),
@@ -39,23 +40,23 @@ const Login = () => {
         <Container>
             <Column>
                 <Title>
-                    Ajudamos a construir o seu portfólio de fotos digitais e também desenvolvemos
-                    soluções de TI com IA para web sites, sistemas digitais e celulares 
+                    Aqui você encontrará as tecnologias atuais que resolverão as demandas necessárias da sua empresa 
                 </Title>
             </Column>
             <Column>
                 <Wrapper>
-                    <TitleLogin>Faça seu cadastro</TitleLogin>
-                    <SubTitleLogin>Faça seu login</SubTitleLogin>
+                    <TitleLogin>Preencha seu cadastro</TitleLogin>
+                    <SubTitleLogin>Crie a sua conta</SubTitleLogin>
                     <form onSubmit={handleSubmit(onSubmit)}>
+                        <Input name="nome" errorMessage={errors.nome?.message} control={control} placeholder="nome completo" leftIcon={<MdPerson />}/>
                         <Input name="email" errorMessage={errors.email?.message} control={control} placeholder="email" leftIcon={<MdEmail />}/>
                         <Input name="password" errorMessage={errors.password?.message} control={control} placeholder="senha" type="password" leftIcon={<MdLock />} />
                         <br />
-                        <Button title="Entrar" variant="secondary" type="submit"/>
+                        <Button title="Criar conta" variant="secondary" type="submit"/>
                     </form>
                     <Row>
                         <EsqueciText>Esqueci minha senha</EsqueciText>
-                        <a href="http://localhost:3000/cadastro"> <CriarText>Criar Conta</CriarText> </a>
+                        <CriarText>Criar Conta</CriarText>
                     </Row>
                 </Wrapper>
                
@@ -64,4 +65,4 @@ const Login = () => {
         </>
     )
 }
-export {Login}
+export {Cadastro}

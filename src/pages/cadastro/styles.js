@@ -36,12 +36,22 @@ export const SubTitleLogin = styled.p`
     line-height: 25px;
 `
 
-export const EsqueciText = styled.p`
+export const AvisoText = styled.p`
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #DDDDDD;
+`
+
+export const LoginText = styled.p`
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
     line-height: 19px;
-    color: #E5E044;
+    color: #EEEEEE;
 `
 
 export const CriarText = styled.p`
@@ -49,7 +59,8 @@ export const CriarText = styled.p`
     font-weight: 700;
     font-size: 14px;
     line-height: 19px;
-    color: #a544e5;
+    margin-left: 5px;
+    color: #0c60b4;
 `
 
 export const Wrapper = styled.div`
@@ -63,7 +74,9 @@ export const Column = styled.div`
 export const Row = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    align-items: left;
     margin-top: 20px;
+    a {
+        text-decoration: none;
+    }
 `

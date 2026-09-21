@@ -11,7 +11,7 @@ const Home = () => {
     }
     return (
         <>
-        <Header />
+        <Header home={true}/>
         <Container>
             <div>
                 <Title>
@@ -21,14 +21,13 @@ const Home = () => {
                     o seu futuro digital agora!
                 </Title>
                 <TextContent>
-                    Ajudamos a construir o seu portfólio de fotos digitais e também desenvolvemos
-                    soluções de TI com IA para web sites, sistemas digitais e celulares 
+                    Desenvolvemos soluções de TI com IA para web sites, sistemas digitais e celulares, 
+                    como também ajudamos a construir o seu portfólio de fotos digitai 
                 </TextContent>
                 <Button title="Começar agora" variant='secondary' onClick={handleClickSignIn} />
             </div>
             <div>
                 <Figura src={figura} alt="Imagem principal" />
-                {/* No CSS <img src={figura} alt="Imagem principal" />  */}
             </div>
         </Container>
         </>

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -16,6 +16,9 @@ const schema = yup.object({
 
 const Login = () => {
     const navigate = useNavigate();
+    const handleClickSignUp = () => {
+        navigate('/feed')
+    }
     const { control, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(schema),
         mode: 'onSubmit',
@@ -45,7 +48,7 @@ const Login = () => {
             </Column>
             <Column>
                 <Wrapper>
-                    <TitleLogin>Faça seu cadastro</TitleLogin>
+                    <TitleLogin>Entre na sua conta</TitleLogin>
                     <SubTitleLogin>Faça seu login</SubTitleLogin>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Input name="email" errorMessage={errors.email?.message} control={control} placeholder="email" leftIcon={<MdEmail />}/>
@@ -55,7 +58,7 @@ const Login = () => {
                     </form>
                     <Row>
                         <EsqueciText>Esqueci minha senha</EsqueciText>
-                        <a href="http://localhost:3000/cadastro"> <CriarText>Criar Conta</CriarText> </a>
+                        <Link to="/cadastro"> <CriarText>Criar Conta</CriarText> </Link>
                     </Row>
                 </Wrapper>
                

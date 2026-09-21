@@ -1,9 +1,20 @@
 import {BuscarInputContainer, Container, Input, LogoImage,
     Menu, MenuRight, Row, UserPicture, Wrapper} from './styles';
 import {Button} from '../Button';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo_tituntech.png'
 
-const Header = ({autenticado}) => {
+const Header = ({autenticado,home}) => {
+    const navigate = useNavigate();
+    const handleClickSignIn = () => {
+        navigate('/login')
+    }
+    const handleClickSignUp = () => {
+        navigate('/cadastro')
+    }  
+    const handleClickHome = () => {
+        navigate('/')
+    }
   return (
     <Wrapper>
         <Container>
@@ -13,17 +24,18 @@ const Header = ({autenticado}) => {
                     <BuscarInputContainer>
                         <Input placeholder='Buscar...' />
                     </BuscarInputContainer>
-                    <Menu>Live Code</Menu>
-                    <Menu>Global</Menu>
+                    <Menu>Desenvolvimento</Menu>
+                    <Menu>Fotografia</Menu>
                 </>) : null}
             </Row>
             <Row>
-                {autenticado ? (
-                        <UserPicture src="https://avatars.githubusercontent.com/u/173863078?v=4" />
-                ) : (<>
-                        <MenuRight href="#">Home</MenuRight>
-                        <Button title="Entrar" />
-                        <Button title="Cadastrar" /> </>
+                {autenticado ? (<>
+                        <Button onClick={handleClickHome} title="Início" />
+                        <UserPicture src="https://avatars.githubusercontent.com/u/173863078?v=4" /> </>
+                ) : (<> 
+                        {home ? null : <Button onClick={handleClickHome} title="Início" />}
+                        <Button onClick={handleClickSignIn} title="Entrar" />
+                        <Button onClick={handleClickSignUp} title="Cadastrar" /> </>
                 )}
                 
             </Row>

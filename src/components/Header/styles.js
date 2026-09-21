@@ -65,6 +65,7 @@ export const UserPicture = styled.img`
     height: 32px;
     border-radius: 22px;
     border: 2px solid #FFFFFF;
+    margin-left: 12px;
 `
 export const LogoImage = styled.img`
     height: 100%; 

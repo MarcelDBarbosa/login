@@ -1,6 +1,28 @@
 {
-    "users": [
-        {"id":1, "name": "Marcel", "email": "marcel@gmail.com", "senha": "qwerty"},
-        {"id":2, "name": "Pablo", "email": "pablo@gmail.com", "senha": "zxcvbn"}
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "Marcel",
+      "email": "marcel@gmail.com",
+      "senha": "qwerty"
+    },
+    {
+      "id": 2,
+      "name": "Pablo",
+      "email": "pablo@gmail.com",
+      "senha": "zxcvbn"
+    },
+    {
+      "id": 3,
+      "name": "Juliana",
+      "email": "juju@yahoo.com",
+      "senha": "asdfgh"
+    },
+    {
+      "id": 4,
+      "name": "Marta",
+      "email": "estela@email.com",
+      "senha": "qawsed"
+    }
+  ]
 }

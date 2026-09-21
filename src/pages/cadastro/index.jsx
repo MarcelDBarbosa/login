@@ -24,12 +24,27 @@ const Cadastro = () => {
 
     const onSubmit = async formData =>{
         try {
-            const {data} = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
-            if (data.length === 1){
-                navigate('/feed') 
-            }else{
-                alert('Email ou senha inválido')
+            const {data: users} = await api.get('/users');
+            const userAlreadyExists = users.some(user => user.email === formData.email);
+
+            if (userAlreadyExists) {
+                alert('Este email ja esta cadastrado.');
+                return;
             }
+
+            const nextId = users.length > 0
+                ? Math.max(...users.map(user => Number(user.id) || 0)) + 1
+                : 1;
+
+            await api.post('/users', {
+                id: nextId,
+                name: formData.nome,
+                email: formData.email,
+                senha: formData.password,
+            });
+
+            alert('Cadastro realizado com sucesso!');
+            navigate('/login');
         }catch{
             alert('Houve um erro, tente novamente.')
         }
